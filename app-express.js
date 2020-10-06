@@ -9,7 +9,7 @@ var apiController = require('./controller/api-controller');
 var homeController = require('./controller/home-controller');
 
 var app = express();
-var port = 3000;
+var port = process.env.PORT || 3000;
 var router = express.Router()
 
 mongoose.connect('mongodb+srv://admin:Thanchet123@test.zjz87.mongodb.net/test?retryWrites=true&w=majority', {
