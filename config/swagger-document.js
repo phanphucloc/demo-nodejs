@@ -21,9 +21,6 @@
         "description": "API for users in the system"
       }
     ],
-    "schemes": [
-      "http"
-    ],
     "consumes": [
       "application/json"
     ],
