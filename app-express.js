@@ -7,6 +7,7 @@ var swaggerDocument = require('./config/swagger-document');
 
 var apiController = require('./controller/api-controller');
 var homeController = require('./controller/home-controller');
+const { Router } = require('express');
 
 var app = express();
 var port = process.env.PORT || 3000;
@@ -17,13 +18,12 @@ mongoose.connect('mongodb+srv://admin:Thanchet123@test.zjz87.mongodb.net/test?re
     useUnifiedTopology: true
 })
 
-
-
 // MIDDLEWARE static
 app.use('/assets', express.static(__dirname + '/public'));
 app.use(cookieParser())
 app.use('/', function (req, res, next) {
     console.log('Request: ' + req.url);
+    console.log('hostname: ' + req.hostname);
 
     // connect mysql (use XAMPP)
     // https://www.youtube.com/watch?v=RrJcj68cIvo&list=PLqnlyu33Xy-6g7IqU5-3BXOfewcJKoL08&index=76
@@ -58,6 +58,8 @@ app.set('view engine', 'ejs');
 
 apiController(app, mongoose);
 homeController(app);
+
+var url = require('url');
 
 app.listen(port, function () {
     console.log('listening on port: ' + port);
