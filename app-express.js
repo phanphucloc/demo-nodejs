@@ -37,6 +37,8 @@ app.use('/', function (req, res, next) {
 
     console.log('protocol: ',  req.protocol);
 
+    console.log('req: ',  req);
+
     // connect mysql (use XAMPP)
     // https://www.youtube.com/watch?v=RrJcj68cIvo&list=PLqnlyu33Xy-6g7IqU5-3BXOfewcJKoL08&index=76
     // var connection = mySql.createConnection({
