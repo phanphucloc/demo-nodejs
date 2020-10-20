@@ -59,6 +59,7 @@ router.post('/login-json', jsonParser, function (req, res) {
 
         var url = system.BASE_PATH_URL_API + 'authorization/login';
 
+        console.log('url:' , url);
         axios.post(url, {
                 email,
                 password
