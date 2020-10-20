@@ -35,9 +35,8 @@ app.use('/', function (req, res, next) {
 
     system.BASE_PATH_URL_API =  req.protocol + '://' +  req.hostname + ':' + port + system.BASE_URL_API;
 
-    console.log('protocol: ',  req.protocol);
+    console.log('protocol: ',  req.headers['x-forwarded-proto'] && req.headers['x-forwarded-proto'] ||  req.protocol );
 
-    console.log('req: ',  req);
 
     // connect mysql (use XAMPP)
     // https://www.youtube.com/watch?v=RrJcj68cIvo&list=PLqnlyu33Xy-6g7IqU5-3BXOfewcJKoL08&index=76
