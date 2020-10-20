@@ -29,6 +29,8 @@ app.use('/assets', express.static(__dirname + '/public'));
 app.use(cookieParser())
 app.use('/', function (req, res, next) {
     
+    console.log('process.env.MONGODB_UR: ', process.env.MONGODB_UR);
+    
     system.BASE_PATH_URL_API =  req.protocol + '://' +  req.hostname + ':' + port + system.BASE_URL_API;
 
     // connect mysql (use XAMPP)
