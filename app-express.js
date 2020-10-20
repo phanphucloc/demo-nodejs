@@ -1,19 +1,25 @@
+var {  
+  system,
+  authSwaggerDocument,
+  personSwaggerDocument
+} = require('./config/index');
 var express = require('express');
 var cookieParser = require('cookie-parser');
 // var mySql = require('mysql');
 var mongoose = require('mongoose');
 var swaggerUi = require('swagger-ui-express');
-var swaggerDocument = require('./config/swagger-document');
-
 var apiController = require('./controller/api-controller');
-var homeController = require('./controller/home-controller');
-const { Router } = require('express');
+var viewsController = require('./controller/views-controller');
+
+
 
 var app = express();
+var server  = require('http').createServer(app);
+
 var port = process.env.PORT || 3000;
 var router = express.Router()
 
-mongoose.connect('mongodb+srv://admin:Thanchet123@test.zjz87.mongodb.net/test?retryWrites=true&w=majority', {
+mongoose.connect(process.env.MONGODB_URL, {
     useNewUrlParser: true,
     useUnifiedTopology: true
 })
@@ -22,8 +28,8 @@ mongoose.connect('mongodb+srv://admin:Thanchet123@test.zjz87.mongodb.net/test?re
 app.use('/assets', express.static(__dirname + '/public'));
 app.use(cookieParser())
 app.use('/', function (req, res, next) {
-    console.log('Request: ' + req.url);
-    console.log('hostname: ' + req.hostname);
+    
+    system.BASE_PATH_URL_API =  req.protocol + '://' +  req.hostname + ':' + port + system.BASE_URL_API;
 
     // connect mysql (use XAMPP)
     // https://www.youtube.com/watch?v=RrJcj68cIvo&list=PLqnlyu33Xy-6g7IqU5-3BXOfewcJKoL08&index=76
@@ -45,22 +51,27 @@ app.use('/', function (req, res, next) {
 
     // connect mongoDB(use https://cloud.mongodb.com)
     // https://www.youtube.com/watch?v=JKBurpy_hfs&list=PLqnlyu33Xy-6g7IqU5-3BXOfewcJKoL08&index=78
-  
     req.requestTime = new Date();
     next();
 })
 
-app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+app.use('/person-api-docs', swaggerUi.serve, swaggerUi.setup(personSwaggerDocument,  { "showExplorer": true }));
+app.use('/auth-api-docs', swaggerUi.serve, swaggerUi.setup(authSwaggerDocument,  { "showExplorer": true }));
 app.use('/api/v1', router);
+app.use(express.json())
+
 
 // npm install ejs
 app.set('view engine', 'ejs');
 
-apiController(app, mongoose);
-homeController(app);
+apiController(app);
+viewsController(app);
 
-var url = require('url');
 
-app.listen(port, function () {
+// app.listen(port, function () {
+//     console.log('listening on port: ' + port);
+// });
+server.listen(3000, function(err) {
     console.log('listening on port: ' + port);
+    // console.log(err, server.address());
 });
