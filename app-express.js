@@ -28,14 +28,13 @@ mongoose.connect(process.env.MONGODB_URL, {
 app.use('/assets', express.static(__dirname + '/public'));
 app.use(cookieParser())
 app.use('/', function (req, res, next) {
-    
+    const protocol =  req.protocol + '://' +  req.hostname + ':' + port + system.BASE_URL_API;
+
     console.log('process.env.MONGODB_UR: ', process.env.MONGODB_UR);
 
     console.log('mongoose: ', mongoose);
 
-    system.BASE_PATH_URL_API =  req.protocol + '://' +  req.hostname + ':' + port + system.BASE_URL_API;
-
-    console.log('protocol: ',  req.headers['x-forwarded-proto'] && req.headers['x-forwarded-proto'] ||  req.protocol );
+    system.BASE_PATH_URL_API =  protocol + '://' +  req.hostname + ':' + port + system.BASE_URL_API;
 
 
     // connect mysql (use XAMPP)
