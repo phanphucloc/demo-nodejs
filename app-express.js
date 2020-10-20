@@ -71,7 +71,7 @@ viewsController(app);
 // app.listen(port, function () {
 //     console.log('listening on port: ' + port);
 // });
-server.listen(3000, function(err) {
+server.listen(port, function(err) {
     console.log('listening on port: ' + port);
     // console.log(err, server.address());
 });
