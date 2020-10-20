@@ -56,7 +56,6 @@ personSchema.pre('save', async function (next) {
 personSchema.methods.generateAuthToken = async function() {
     // Generate an auth token for the user
     const user = this
-    console.log(process.env);
     const token = jwt.sign({_id: user._id}, system.JWT_KEY)
     user.tokens = user.tokens.concat({token})
     await user.save()
@@ -66,7 +65,6 @@ personSchema.methods.generateAuthToken = async function() {
 personSchema.statics.findByCredentials = async (email, password) => {
     // Search for a user by email and password.
     const user = await Person.findOne({ email} )
-    console.log(user);
     if (!user) {
         throw new Error({ error: 'Invalid login credentials' })
     }

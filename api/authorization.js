@@ -9,7 +9,6 @@ const router = express.Router()
 const authorizationServiceInstance = new AuthorizationService(Person);
 
 router.post(system.BASE_URL_API + 'authorization/login', async(req, res) => {
-    console.log('vô');
     //Login a registered user
     try {
         const { email, password } = req.body

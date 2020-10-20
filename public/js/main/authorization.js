@@ -15,6 +15,7 @@ function loginJson(email, password) {
         success: function (result) {
             alert('Đăng nhập thành công');
             setCookie('Authorization', result.token, 1);
+            window.location.href = '/dashboard';
         },
         complete: function (params) {
             loadingButtonLogin.hideLoadingElement();

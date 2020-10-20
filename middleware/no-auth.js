@@ -9,7 +9,12 @@ const noAuth = async(req, res, next) => {
             next();
         }
     } catch (error) {
-        res.redirect('/');
+        if(req.method === 'GET'){
+            res.redirect('/');
+        }
+        else{
+            res.status(401).send({ error: 'You are already logged in, cannot access this page!' });
+        }
     }
 
 }

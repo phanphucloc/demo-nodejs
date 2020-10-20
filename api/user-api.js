@@ -11,8 +11,6 @@ router.post(system.BASE_URL_API + 'user' , async (req, res) => {
         const person = new Person(req.body)
         await person.save()
         const token = await person.generateAuthToken()
-        console.log(person);
-        console.log('token' , token);
         res.status(201).send({ person, token })
     } catch (error) {
         console.log('error');

@@ -22,6 +22,7 @@ function loginJson(email, password) {
         success: function (result) {
             alert('Đăng hập thành công');
             setCookie('Authorization', result.token, 1);
+            window.location.href = '/dashboard';
         },
         complete: function (params) {
             loadingButtonLogin.hideLoadingElement();

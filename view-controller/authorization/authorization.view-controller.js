@@ -90,7 +90,6 @@ router.post('/logout', async (req, res) => {
             'Authorization': token
         }
 
-        console.log(headers);
 
         axios.post(url, {} , {
                 headers
