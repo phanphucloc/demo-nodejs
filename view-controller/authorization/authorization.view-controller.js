@@ -14,8 +14,9 @@ var urlencodedParser = bodyParser.urlencoded({
 })
 // create application/json parser
 var jsonParser = bodyParser.json()
+const { TYPE_REQUEST } = require('../../config/index');
 
-router.get('/login', noAuth , function (req, res) {
+router.get('/login', noAuth(TYPE_REQUEST.VIEW) , function (req, res) {
     try {
         res.render('home/authorization/login', {
             username: req.cookies.username

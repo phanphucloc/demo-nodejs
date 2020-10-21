@@ -1,11 +1,11 @@
 const express = require('express')
-var { system } = require('../config/index');
+const { system , TYPE_REQUEST } = require('../config/index');
 const Person = require('../models/person')
 const auth = require('../middleware/auth')
 
 const router = express.Router()
 
-router.post(system.BASE_URL_API + 'user' , async (req, res) => {
+router.post(system.BASE_URL_API + 'user' , auth(TYPE_REQUEST.API) , async (req, res) => {
     // Create a new user
     try {
         const person = new Person(req.body)
@@ -18,7 +18,7 @@ router.post(system.BASE_URL_API + 'user' , async (req, res) => {
     }
 })
 
-router.post(system.BASE_URL_API + 'user/:id', auth , async (req, res) => {
+router.post(system.BASE_URL_API + 'user/:id', auth(TYPE_REQUEST.API) , async (req, res) => {
     // Edit a new user
     try {
         await Person.update(
@@ -40,7 +40,7 @@ router.post(system.BASE_URL_API + 'user/:id', auth , async (req, res) => {
 })
 
 
-router.get(system.BASE_URL_API + 'users', auth , async (req, res) => {
+router.get(system.BASE_URL_API + 'users', auth(TYPE_REQUEST.API) , async (req, res) => {
     // get all user
     try {
         const person = await Person.find();
@@ -51,7 +51,7 @@ router.get(system.BASE_URL_API + 'users', auth , async (req, res) => {
 })
 
 
-router.get(system.BASE_URL_API + 'user/:id' , async (req, res) => {
+router.get(system.BASE_URL_API + 'user/:id' , auth(TYPE_REQUEST.API) , async (req, res) => {
     // get user by Id
     try {
         const person = await Person.findOne({_id: req.params.id});
@@ -62,7 +62,7 @@ router.get(system.BASE_URL_API + 'user/:id' , async (req, res) => {
 })
 
 
-router.delete(system.BASE_URL_API + 'user/:id', auth , async (req, res) => {
+router.delete(system.BASE_URL_API + 'user/:id', auth(TYPE_REQUEST.API) , async (req, res) => {
     // delete user by Id
     try {
         await Person.deleteOne({_id: req.params.id});

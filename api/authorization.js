@@ -1,11 +1,10 @@
 
 const express = require('express')
 const AuthorizationService = require('../service/authorization.service')
-var { system } = require('../config/index');
+const { system , TYPE_REQUEST } = require('../config/index');
 const Person = require('../models/person')
 const auth = require('../middleware/auth')
 const router = express.Router()
-
 const authorizationServiceInstance = new AuthorizationService(Person);
 
 router.post(system.BASE_URL_API + 'authorization/login', async(req, res) => {
@@ -19,7 +18,7 @@ router.post(system.BASE_URL_API + 'authorization/login', async(req, res) => {
     }
 });
 
-router.post(system.BASE_URL_API + 'authorization/logout', auth , async (req, res) => {
+router.post(system.BASE_URL_API + 'authorization/logout', auth(TYPE_REQUEST.API) , async (req, res) => {
     // Log user out of the application
     try {
         const data = await authorizationServiceInstance.logout(req.person,req.token);
@@ -29,7 +28,7 @@ router.post(system.BASE_URL_API + 'authorization/logout', auth , async (req, res
     }
 })
 
-router.post(system.BASE_URL_API + 'authorization/logout-all', auth , async(req, res) => {
+router.post(system.BASE_URL_API + 'authorization/logout-all', auth(TYPE_REQUEST.API) , async(req, res) => {
     // Log user out of all devices
     try {
         const data = await authorizationServiceInstance.logoutAll(req.person);
