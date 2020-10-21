@@ -10,7 +10,7 @@ const noAuth = async(req, res, next) => {
         }
     } catch (error) {
         if(req.method === 'GET'){
-            res.redirect('/');
+            res.redirect('/das');
         }
         else{
             res.status(401).send({ error: 'You are already logged in, cannot access this page!' });

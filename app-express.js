@@ -1,7 +1,8 @@
 var {  
   system,
   authSwaggerDocument,
-  personSwaggerDocument
+  personSwaggerDocument,
+  NAME_ENVIRONMENT,
 } = require('./config/index');
 var express = require('express');
 var cookieParser = require('cookie-parser');
@@ -28,13 +29,17 @@ mongoose.connect(process.env.MONGODB_URL, {
 app.use('/assets', express.static(__dirname + '/public'));
 app.use(cookieParser())
 app.use('/', function (req, res, next) {
+
     const protocol =  req.headers['x-forwarded-proto'] && req.headers['x-forwarded-proto'] ||  req.protocol;
 
-    const port =  req.headers['x-forwarded-proto'] && req.headers['x-forwarded-proto'] ||  req.protocol;
-
-
-    system.BASE_PATH_URL_API =  protocol + '://' +  req.hostname + ':' + port + system.BASE_URL_API;
-
+    if(process.env.NAME_ENVIRONMENT === NAME_ENVIRONMENT.DEV){ 
+        system.BASE_PATH_URL_API =  protocol + '://' +  req.hostname + ':' + port + system.BASE_URL_API;
+    }
+    else{
+        system.BASE_PATH_URL_API =  protocol + '://' +  req.hostname + system.BASE_URL_API;
+    }
+    
+    
     // connect mysql (use XAMPP)
     // https://www.youtube.com/watch?v=RrJcj68cIvo&list=PLqnlyu33Xy-6g7IqU5-3BXOfewcJKoL08&index=76
     // var connection = mySql.createConnection({

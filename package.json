@@ -22,8 +22,9 @@
   "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "env-cmd -f ./.env node app-express.js",
-    "start-dev": "env-cmd -f ./.env nodemon app-express.js"
+    "start": "env-cmd -f ./env/.env nodemon app-express.js",
+    "start:dev": "env-cmd -f ./env/.env nodemon app-express.js",
+    "start:heroku": "env-cmd -f ./env/heroku.env node app-express.js",
   },
   "author": "Loc",
   "license": "MIT",
