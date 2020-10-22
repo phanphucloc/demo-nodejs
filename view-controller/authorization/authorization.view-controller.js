@@ -1,5 +1,7 @@
 var {
-    system
+    system,
+    TYPE_REQUEST,
+    URL_LAYOUT
 } = require('../../config/index');
 const express = require('express')
 const axios = require('axios');
@@ -14,12 +16,12 @@ var urlencodedParser = bodyParser.urlencoded({
 })
 // create application/json parser
 var jsonParser = bodyParser.json()
-const { TYPE_REQUEST } = require('../../config/index');
+
 
 router.get('/login', noAuth(TYPE_REQUEST.VIEW) , function (req, res) {
     try {
-        res.render('home/authorization/login', {
-            username: req.cookies.username
+        res.render(URL_LAYOUT.HOME, {
+            urlCurrentPage: '../../home/authorization/login'
         });
     } catch {
         res.status(500).send(error)
@@ -112,7 +114,7 @@ router.post('/logout', async (req, res) => {
 router.post('logout-all', async (req, res) => {
     // Log user out of all devices
     try {
-        const data = await authorizationServiceInstance.logoutAll(req.person);
+        const data = await authorizationServiceInstance.logoutAll(req.user);
         res.send(data);
     } catch (error) {
         res.status(500).send(error)

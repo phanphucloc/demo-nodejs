@@ -1,5 +1,5 @@
 const jwt = require('jsonwebtoken')
-const Person = require('../models/person')
+const UserModel = require('../models/user')
 const {
     TYPE_REQUEST
 } = require('../config/index')
@@ -10,14 +10,14 @@ const auth =  (typeRequest) => {
         try {
             const token = req.header('Authorization')?.replace('Bearer ', '') || req.cookies.Authorization?.replace('Bearer ', '');
             const data = jwt.verify(token, process.env.JWT_KEY);
-            const person = await Person.findOne({
+            const user = await UserModel.findOne({
                 _id: data._id,
                 'tokens.token': token
             });
-            if (!person) {
+            if (!user) {
                 throw new Error()
             }
-            req.person = person;
+            req.user = user;
             req.token = token;
             next()
         } catch (error) {

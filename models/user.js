@@ -4,7 +4,7 @@ const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
 var { system } = require('../config/index');
 
-const personSchema = mongoose.Schema({
+const userSchema = mongoose.Schema({
     firstName: {
         type: String,
         required: true,
@@ -44,7 +44,7 @@ const personSchema = mongoose.Schema({
     }]
 })
 
-personSchema.pre('save', async function (next) {
+userSchema.pre('save', async function (next) {
     // Hash the password before saving the user model
     const user = this
     if (user.isModified('password')) {
@@ -53,7 +53,7 @@ personSchema.pre('save', async function (next) {
     next()
 })
 
-personSchema.methods.generateAuthToken = async function() {
+userSchema.methods.generateAuthToken = async function() {
     // Generate an auth token for the user
     const user = this
     const token = jwt.sign({_id: user._id}, system.JWT_KEY)
@@ -62,9 +62,9 @@ personSchema.methods.generateAuthToken = async function() {
     return token
 }
 
-personSchema.statics.findByCredentials = async (email, password) => {
+userSchema.statics.findByCredentials = async (email, password) => {
     // Search for a user by email and password.
-    const user = await Person.findOne({ email} )
+    const user = await UserModel.findOne({ email} )
     if (!user) {
         throw new Error({ error: 'Invalid login credentials' })
     }
@@ -75,6 +75,6 @@ personSchema.statics.findByCredentials = async (email, password) => {
     return user
 }
 
-const Person = mongoose.model('Person', personSchema)
+const UserModel = mongoose.model('UserModel', userSchema)
 
-module.exports = Person
+module.exports = UserModel

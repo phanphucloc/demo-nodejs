@@ -1,7 +1,7 @@
 var {  
   system,
   authSwaggerDocument,
-  personSwaggerDocument,
+  userSwaggerDocument,
   NAME_ENVIRONMENT,
 } = require('./config/index');
 var express = require('express');
@@ -64,7 +64,7 @@ app.use('/', function (req, res, next) {
     next();
 })
 
-app.use('/person-api-docs', swaggerUi.serve, swaggerUi.setup(personSwaggerDocument,  { "showExplorer": true }));
+app.use('/user-api-docs', swaggerUi.serve, swaggerUi.setup(userSwaggerDocument,  { "showExplorer": true }));
 app.use('/auth-api-docs', swaggerUi.serve, swaggerUi.setup(authSwaggerDocument,  { "showExplorer": true }));
 app.use('/api/v1', router);
 app.use(express.json())

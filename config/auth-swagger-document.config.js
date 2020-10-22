@@ -25,18 +25,18 @@ const swaggerDocument = {
     "paths": {
         "/authorization/login": {
             "parameters": [{
-                "name": "Person",
+                "name": "UserModel",
                 "in": "body",
                 "description": "User for login",
                 "schema": {
-                    "$ref": "#/definitions/Person"
+                    "$ref": "#/definitions/UserModel"
                 }
             }],
             "post": {
                 "tags": [
                     "Logout"
                 ],
-                "summary": "logout person in system",
+                "summary": "logout user in system",
                 "responses": {
                     "200": {
                         "description": "OK",
@@ -63,12 +63,12 @@ const swaggerDocument = {
                 "tags": [
                     "Logout"
                 ],
-                "summary": "logout person in system",
+                "summary": "logout user in system",
                 "responses": {
                     "200": {
                         "description": "OK",
                         "schema": {
-                            "$ref": "#/definitions/Person"
+                            "$ref": "#/definitions/UserModel"
                         }
                     },
                     "403": {
@@ -90,12 +90,12 @@ const swaggerDocument = {
                 "tags": [
                     "Persons"
                 ],
-                "summary": "logout Person all driver",
+                "summary": "logout UserModel all driver",
                 "responses": {
                     "200": {
-                        "description": "Person is found",
+                        "description": "UserModel is found",
                         "schema": {
-                            "$ref": "#/definitions/Person"
+                            "$ref": "#/definitions/UserModel"
                         }
                     }
                 }
@@ -103,7 +103,7 @@ const swaggerDocument = {
         },
     },
     "definitions": {
-        "Person": {
+        "UserModel": {
             "required": [
                 "email",
                 "password",
@@ -119,7 +119,7 @@ const swaggerDocument = {
         },
         "LoginResult": {
             "properties": {
-                "person": {
+                "user": {
                     "$ref": "#/definitions/PersonResult"
                 },
                 "token": {

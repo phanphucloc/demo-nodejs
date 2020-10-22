@@ -1,12 +1,12 @@
 var authorizationViewController = require('./authorization/index');
 var homeViewController = require('./home/index');
 
-var personViewController = require('./admin/person/index');
+var userViewController = require('./admin/user/index');
 var dashboardViewController = require('./admin/dashboard/index');
 
 module.exports = {
     authorizationViewController,
     homeViewController,
-    personViewController,
+    userViewController,
     dashboardViewController
 }

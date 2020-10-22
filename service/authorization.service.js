@@ -1,38 +1,38 @@
 module.exports = class AuthorizationService {
 
-    constructor(personModel) {
-        this.personModel = personModel;
+    constructor(userModel) {
+        this.userModel = userModel;
     }
 
     async login(email, password) {
-        const person = await this.personModel.findByCredentials(email, password)
-        if (!person) {
+        const user = await this.userModel.findByCredentials(email, password)
+        if (!user) {
             return res.status(401).send({
                 error: 'Login failed! Check authentication credentials'
             })
         }
-        const token = await person.generateAuthToken()
+        const token = await user.generateAuthToken()
         return {
-            person,
+            user,
             token
         };
     }
 
-    async logout(person, tokenCurrent) {
-        person.tokens = person.tokens.filter((token) => {
+    async logout(user, tokenCurrent) {
+        user.tokens = user.tokens.filter((token) => {
             return token.token != tokenCurrent
         })
-        await person.save()
+        await user.save()
         return {
-            person
+            user
         };
     }
 
-    async logoutAll(person) {
-        person.tokens.splice(0, person.tokens.length)
-        await person.save()
+    async logoutAll(user) {
+        user.tokens.splice(0, user.tokens.length)
+        await user.save()
         return {
-            person
+            user
         };
     }
 }

@@ -1,14 +1,16 @@
 var system = require('./system.config');
 var authSwaggerDocument = require('./auth-swagger-document.config');
-var personSwaggerDocument = require('./person-swagger-document.config');
+var userSwaggerDocument = require('./user-swagger-document.config');
 
 var NAME_ENVIRONMENT = require('./name-environment.const');
 var TYPE_REQUEST = require('./type-request.const');
+var URL_LAYOUT = require('./url-layout.const');
 
 module.exports = {
     system,
     authSwaggerDocument,
-    personSwaggerDocument,
+    userSwaggerDocument,
     NAME_ENVIRONMENT,
-    TYPE_REQUEST
+    TYPE_REQUEST,
+    URL_LAYOUT
 }

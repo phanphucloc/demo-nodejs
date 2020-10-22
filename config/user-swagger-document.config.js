@@ -36,7 +36,7 @@
     ],
     "tags": [
       {
-        "name": "Persons",
+        "name": "Users",
         "description": "API for users in the system",
       }
     ],
@@ -44,15 +44,15 @@
       "/users": {
         "get": {
           "tags": [
-            "Persons"
+            "Users"
           ],
-          "summary": "Get all person in system",
+          "summary": "Get all user in system",
           
           "responses": {
             "200": {
               "description": "OK",
               "schema": {
-                "$ref": "#/definitions/Persons"
+                "$ref": "#/definitions/Users"
               }
             },
             "403": {
@@ -67,84 +67,84 @@
             "name": "userId",
             "in": "path",
             "required": true,
-            "description": "ID of Person that we want to find",
+            "description": "ID of User that we want to find",
             "type": "string"
           }
         ],
         "get": {
           "tags": [
-            "Persons"
+            "Users"
           ],
-          "summary": "Get Person with given ID",
+          "summary": "Get User with given ID",
           "responses": {
             "200": {
-              "description": "Person is found",
+              "description": "User is found",
               "schema": {
-                "$ref": "#/definitions/Person"
+                "$ref": "#/definitions/User"
               }
             }
           }
         },
         "delete": {
-          "summary": "Delete Person with given ID",
+          "summary": "Delete User with given ID",
           "tags": [
-            "Persons"
+            "Users"
           ],
           "responses": {
             "200": {
-              "description": "Person is deleted",
+              "description": "User is deleted",
               "schema": {
-                "$ref": "#/definitions/Person"
+                "$ref": "#/definitions/User"
               }
             }
           }
         },
-        "put": {
-          "summary": "Update person with give ID",
+        "post": {
+          "summary": "Update user with give ID",
           "tags": [
-            "Persons"
+            "Users"
           ],
           "parameters": [
             {
-              "name": "Person",
+              "name": "User",
               "in": "body",
               "description": "User with new values of properties",
               "schema": {
-                "$ref": "#/definitions/Person"
+                "$ref": "#/definitions/UserUpdate"
               }
             }
           ],
           "responses": {
             "200": {
-              "description": "Person is updated",
+              "description": "User is updated",
               "schema": {
-                "$ref": "#/definitions/Person"
+                "$ref": "#/definitions/UserUpdate"
               }
             }
           }
         }
       },
       "/user": {
-        "put": {
-          "summary": "Create person with give ID",
+        "post": {
+          "summary": "Create user with give ID",
           "tags": [
-            "Persons"
+            "Users"
           ],
           "parameters": [
             {
-              "name": "Person",
+              "name": "User",
               "in": "body",
               "description": "User with new values of properties",
               "schema": {
-                "$ref": "#/definitions/PersonResister"
+                "$ref": "#/definitions/UserResister"
               }
             }
           ],
           "responses": {
             "200": {
-              "description": "Person is created",
+              "description": "User is created",
               "schema": {
-                "$ref": "#/definitions/PersonResister"
+                "$ref": "#/definitions/UserResister"
               }
             }
           }
@@ -152,7 +152,7 @@
       }
     },
     "definitions": {
-      "Person": {
+      "User": {
         "required": [
           "_id"
         ],
@@ -172,8 +172,11 @@
           }
         }
       },
-      "PersonResister": {
+      "UserUpdate": {
         "properties": {
+          "email": {
+            "type": "string"
+          },
           "address": {
             "type": "string",
           },
@@ -182,12 +185,34 @@
           },
           "firstName": {
             "type": "string"
+          },
+          "password": {
+            "type": "string"
           }
         }
       },
-      "Persons": {
+      "UserResister": {
+        "properties": {
+          "email": {
+            "type": "string"
+          },
+          "address": {
+            "type": "string",
+          },
+          "lastName": {
+            "type": "string"
+          },
+          "firstName": {
+            "type": "string"
+          },
+          "password": {
+            "type": "string"
+          }
+        }
+      },
+      "Users": {
         "type": "array",
-        "$ref": "#/definitions/Person"
+        "$ref": "#/definitions/User"
       }
     }
   }
