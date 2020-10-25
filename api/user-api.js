@@ -8,8 +8,8 @@ const userServiceInstance = new PersonService(UserModel);
 
 const router = express.Router()
 
+// POST: Create  a new user
 router.post(system.BASE_URL_API + 'user' , auth(TYPE_REQUEST.API) , async (req, res) => {
-    // Create a new user
     try {
         const { user, token } = await userServiceInstance.createPerson(req.body)
         res.status(201).send({ user, token })
@@ -19,8 +19,8 @@ router.post(system.BASE_URL_API + 'user' , auth(TYPE_REQUEST.API) , async (req, 
     }
 })
 
+// POST: Edit user by id
 router.post(system.BASE_URL_API + 'user/:id', auth(TYPE_REQUEST.API) , async (req, res) => {
-    // Edit a new user
     try {
         const { user } = await userServiceInstance.editPerson(req.params.id,req.body);
         res.status(201).send({ 
@@ -33,9 +33,8 @@ router.post(system.BASE_URL_API + 'user/:id', auth(TYPE_REQUEST.API) , async (re
     }
 })
 
-
+// GET: Get all user
 router.get(system.BASE_URL_API + 'users', auth(TYPE_REQUEST.API) , async (req, res) => {
-    // get all user
     try {
         const { users } = await userServiceInstance.getAllPerson();
         res.status(201).send({
@@ -48,9 +47,8 @@ router.get(system.BASE_URL_API + 'users', auth(TYPE_REQUEST.API) , async (req, r
     }
 })
 
-
+// GET: Get user by Id user by id
 router.get(system.BASE_URL_API + 'user/:id' , auth(TYPE_REQUEST.API) , async (req, res) => {
-    // get user by Id
     try {
         const { user } = await userServiceInstance.getPersonById(req.params.id);
         res.status(201).send({ 
@@ -63,14 +61,13 @@ router.get(system.BASE_URL_API + 'user/:id' , auth(TYPE_REQUEST.API) , async (re
     }
 })
 
-
+// DELETE: Delete user by id
 router.delete(system.BASE_URL_API + 'user/:id', auth(TYPE_REQUEST.API) , async (req, res) => {
-    // delete user by Id
     try {
         const { status , message } = await userServiceInstance.deletePerson(req.params.id);
         res.status(201).send({
-            status: 'OK',
-            message: 'Create success'
+            status,
+            message
         })
     } catch (error) {
         res.status(400).send(error)

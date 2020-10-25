@@ -1,7 +1,9 @@
-const userApi = require('./user-api')
-const userAuthorization = require('./authorization')
+const userAPI = require('./user-api')
+const userAuthorizationAPI = require('./authorization')
+const chatRoomAPI = require('./chat-room')
 
 module.exports = { 
-    userApi,
-    userAuthorization
+    userAPI,
+    userAuthorizationAPI,
+    chatRoomAPI
 }

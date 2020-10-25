@@ -1,0 +1,37 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Thêm phòng chat</h4>
+                    <form class="needs-validation" novalidate>
+                        <div class="form-row">
+                            <div class="col-md-12 mb-3">
+                                <label for="validationCustom01">Tên phòng</label>
+                                <input type="text" class="form-control js-name-room" name="name-room"
+                                    id="validationCustom01" placeholder="Nhập tên phòng ..." required>
+                                <div class="invalid-feedback">
+                                    Vui lòng nhập tên phòng
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col-md-12 mb-3">
+                                <label for="validationCustom03">Mô tả</label>
+                                <textarea type="text" class="form-control js-description" name="description"
+                                    id="validationCustom03" placeholder="Nhập mô tả ..." required></textarea>
+                                <div class="invalid-feedback">
+                                    Vui lòng nhập mô tả
+                                </div>
+                            </div>
+                        </div>
+                        <button class="btn btn-primary js-button-submit" type="submit">Thêm</button>
+                        <button class="btn btn-secondary js-button-come-back" type="button">Quay lại</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="../../../assets/js/admin/chat-room/chat-room-manager/add-chat-room.js"></script>

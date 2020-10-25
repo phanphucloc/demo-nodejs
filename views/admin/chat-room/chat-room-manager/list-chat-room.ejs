@@ -1,0 +1,77 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Danh sách phòng chat</h4>
+                    <div class="btn-list margin-tb">
+                        <button type="button" class="btn js-add waves-effect waves-light btn-primary">
+                            Thêm
+                        </button>
+                        <button type="button" class="btn js-delete-all waves-effect waves-light btn-danger">
+                            Xóa
+                        </button>
+                    </div>
+                    <div class="table-responsive js-table-responsive">
+                        <table class="table">
+                            <thead class="bg-primary text-white">
+                                <tr>
+                                    <th>
+                                        <input type="checkbox" id="js-check-all" />
+                                    </th>
+                                    <th>Tên</th>
+                                    <th class="mobile-hide">Chủ</th>
+                                    <th class="mobile-hide">Online</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <% chatRooms.forEach(function(roomChat){ %>
+                                <tr id-room="<%= roomChat._id %>">
+                                    <td>
+                                        <input type="checkbox" class="js-check" id="check-<%= roomChat._id %>" />
+                                    </td>
+                                    <td data-toggle="tooltip" data-placement="top"
+                                        data-original-title="<%= roomChat.description %>">
+                                        
+                                        <%= roomChat.nameRoom %>
+
+                                        <div class="mobile-show">
+                                            <span class="table-item-show">
+                                                <strong>Chủ: </strong> <%= roomChat.ownRoomName %>
+                                            </span>
+                                            <span class="table-item-show">
+                                                <strong>Online: </strong> <%= roomChat.numberOnline || 0 %>
+                                            </span>
+                                        </div>
+                                    </td>
+                                    <td class="mobile-hide"><%= roomChat.ownRoomName %></td>
+                                    <td class="mobile-hide"><%= roomChat.numberOnline || 0 %></td>
+                                    <td>
+                                        <div class="icons">
+                                            <i class="icon js-icon join-room fas fa-play icon-join-room text-primary"
+                                                data-toggle="tooltip" data-placement="top"
+                                                data-original-title="Vào phòng">
+                                            </i>
+                                            <i class="icon js-icon js-edit fas fa-pencil-alt text-warning"
+                                                data-toggle="tooltip" data-placement="top"
+                                                data-original-title="Sửa phòng">
+                                            </i>
+                                            <i class="icon js-icon js-delete fas fa-trash text-danger"
+                                                data-toggle="tooltip" data-placement="top"
+                                                data-original-title="xóa phòng">
+                                            </i>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <% }); %>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="../../../assets/js/admin/chat-room/chat-room-manager/list-chat-room.js"></script>

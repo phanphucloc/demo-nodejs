@@ -1,9 +1,15 @@
 
-var listGroupAPI = require('../api/index');
+
+const {
+    userAPI,
+    userAuthorizationAPI,
+    chatRoomAPI,
+} = require('../api/index');
 
 module.exports = function (app) {
     app.use([
-        listGroupAPI.userApi,
-        listGroupAPI.userAuthorization
+        userAPI,
+        userAuthorizationAPI,
+        chatRoomAPI,
     ])
 }

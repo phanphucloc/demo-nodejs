@@ -1,0 +1,92 @@
+.btn-list.margin-tb{
+    margin: 15px 0px;
+}
+
+.btn-list.margin-tb .btn{
+    margin: 0px;
+}
+
+.card-body form{
+    margin: 25px 0px;
+}
+
+.table tbody td .icons{
+    text-align: center;
+}
+
+.table tbody td .icons .icon{
+    display: inline-block;
+    margin: 0px 5px;
+    cursor: pointer;
+}
+
+form .form-control.valid{
+    border-color: #22ca80;
+    padding-right: calc(1.5em + .75rem);
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3e%3cpath fill='%2322ca80' d='M2.3 6.73L.6 4.53c-.4-1.04.46-1.4 1.1-.8l1.1 1.4 3.4-3.8c.6-.63 1.6-.27 1.2.7l-4 4.6c-.43.5-.8.4-1.1.1z'/%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: center right calc(.375em + .1875rem);
+    background-size: calc(.75em + .375rem) calc(.75em + .375rem);
+}
+
+form .form-control.error{
+    border-color: #ff4f70;
+    padding-right: calc(1.5em + .75rem);
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='%23ff4f70' viewBox='-2 -2 7 7'%3e%3cpath stroke='%23ff4f70' d='M0 0l3 3m0-3L0 3'/%3e%3ccircle r='.5'/%3e%3ccircle cx='3' r='.5'/%3e%3ccircle cy='3' r='.5'/%3e%3ccircle cx='3' cy='3' r='.5'/%3e%3c/svg%3E");
+    background-repeat: no-repeat;
+    background-position: center right calc(.375em + .1875rem);
+    background-size: calc(.75em + .375rem) calc(.75em + .375rem);
+}
+
+form label.error {
+    display: none;
+    width: 100%;
+    margin-top: .25rem;
+    font-size: 80%;
+    color: #ff4f70;
+}
+
+.js-table-responsive .mobile-show{
+    display: none;
+    position: relative;
+    margin-top: 15px;
+    padding-top: 5px;
+    width:  100%;
+}
+
+.js-table-responsive .mobile-show .table-item-show{
+    display: inline-block;
+    width: 100%;
+    padding: 10px;
+    text-align: start;
+}
+
+.js-table-responsive .mobile-show .table-item-show{
+    display: block;
+    width: 100%;
+    padding: 10px;
+    text-align: start;
+    word-break: break-word;
+}
+
+@media( max-width : 767px){
+    .mobile-hide{
+        display: none;
+    }
+
+    .js-table-responsive .mobile-show{
+        display: block;
+    }
+
+    .js-table-responsive .mobile-show:before {
+        content: '';
+        top: 0px;
+        width: 50%;
+        left: 50%;
+        transform: translateX(-50%);
+        height: 1px;
+        position: absolute;
+        background-color: #dddddd;
+    }
+
+}

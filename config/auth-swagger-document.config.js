@@ -4,8 +4,8 @@ const swaggerDocument = {
     "swagger": "2.0",
     "info": {
         "version": "1.0.0",
-        "title": "Yet Another Node.js Blogg Application API",
-        "description": "Yet Another Node.js Blogg Application API",
+        "title": "Authorization API",
+        "description": "All APIs have access to the Authorization",
         "license": {
             "name": "MIT",
             "url": "https://opensource.org/licenses/MIT"
@@ -34,7 +34,7 @@ const swaggerDocument = {
             }],
             "post": {
                 "tags": [
-                    "Logout"
+                    "Authorization"
                 ],
                 "summary": "logout user in system",
                 "responses": {
@@ -61,7 +61,7 @@ const swaggerDocument = {
             }],
             "post": {
                 "tags": [
-                    "Logout"
+                    "Authorization"
                 ],
                 "summary": "logout user in system",
                 "responses": {
@@ -88,7 +88,7 @@ const swaggerDocument = {
             }],
             "post": {
                 "tags": [
-                    "Persons"
+                    "Authorization"
                 ],
                 "summary": "logout UserModel all driver",
                 "responses": {

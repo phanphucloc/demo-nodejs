@@ -9,9 +9,9 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="../assets/images/favicon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/images/favicon.png">
     <title>Adminmart Template - The Ultimate Multipurpose admin template</title>
-  
+
     <%- include('./head'); %>
 
 </head>
@@ -63,7 +63,7 @@
             <!-- ============================================================== -->
             <!-- footer -->
             <!-- ============================================================== -->
-            <%- include('./page-breadcrumb'); %>
+            <%- include('./page-breadcrumb', {listBreadcrumb : listBreadcrumb}); %>
             <!-- ============================================================== -->
             <!-- End footer -->
             <!-- ============================================================== -->
@@ -77,7 +77,15 @@
     <!-- ============================================================== -->
     <!-- End Wrapper -->
     <!-- ============================================================== -->
-    
+
 </body>
 
 </html>
+
+<script>
+    const elementLogout = $('.redirect-logout');
+
+    elementLogout.click(function () {
+        logout();
+    })
+</script>

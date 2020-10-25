@@ -1,5 +1,10 @@
-
-const { authorizationViewController, homeViewController, userViewController,dashboardViewController } = require('../view-controller/index')
+const {
+    authorizationViewController,
+    homeViewController,
+    userViewController,
+    dashboardViewController,
+    chatRoomViewController
+} = require('../view-controller/index')
 
 module.exports = function (app) {
 
@@ -8,6 +13,7 @@ module.exports = function (app) {
         homeViewController,
         userViewController,
         dashboardViewController,
+        chatRoomViewController,
     ])
 
 }

@@ -15,6 +15,9 @@
           <a class="nav-link" id='redirect-login' href="/login">login</a>
         </li>
         <li class="nav-item">
+          <a class="nav-link" id='redirect-dashboard' href="/dashboard">Dashboard</a>
+        </li>
+        <li class="nav-item">
           <a class="nav-link" id='redirect-logout' href="#">logout</a>
         </li>
         <li class="nav-item">
@@ -28,13 +31,15 @@
 <script>
   const elementLogin = $('#redirect-login');
   const elementLogout = $('#redirect-logout');
-  
+  const elementDashboard = $('#redirect-dashboard');
+
   let resultAuthorization =  checkAuthorization();
   if(resultAuthorization.status){
     elementLogin.remove();
   }
   else{
     elementLogout.remove();
+    elementDashboard.remove();
   }
 
   elementLogout.click(function () {

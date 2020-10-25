@@ -5,31 +5,31 @@ module.exports = class PersonService {
     }
 
     async createPerson(userData) {
+
         const user = new this.UserModel(userData)
         await user.save()
+        
         const token = await user.generateAuthToken()
         return {
             user,
             token
         };
+
     }
 
     async editPerson(id, userData) {
-        await this.UserModel.updateOne({
-            _id: id
-        }, {
-            firstName: userData.firstName,
-            lastName: userData.lastName,
-            address: userData.address
-        }, );
 
+        let newUserData;
+        userData.firstName ?  newUserData.firstName = userData.firstName : newUserData;
+        userData.lastName ?  newUserData.lastName = userData.lastName : newUserData;
+        userData.address ?  newUserData.address = userData.address : newUserData;
+
+        await this.UserModel.updateOne({ _id: id } , newUserData, );
 
         return {
             user: {
                 _id: id,
-                firstName: userData.firstName,
-                lastName: userData.lastName,
-                address: userData.address
+                ...newUserData
             }
         };
     }

@@ -34,20 +34,13 @@
             "jwt": []
         }
     ],
-    "tags": [
-      {
-        "name": "Users",
-        "description": "API for users in the system",
-      }
-    ],
     "paths": {
       "/users": {
         "get": {
           "tags": [
-            "Users"
+            'Users'
           ],
           "summary": "Get all user in system",
-          
           "responses": {
             "200": {
               "description": "OK",
@@ -73,7 +66,7 @@
         ],
         "get": {
           "tags": [
-            "Users"
+            'Users'
           ],
           "summary": "Get User with given ID",
           "responses": {
@@ -86,10 +79,10 @@
           }
         },
         "delete": {
-          "summary": "Delete User with given ID",
           "tags": [
-            "Users"
+            'Users'
           ],
+          "summary": "Delete User with given ID",
           "responses": {
             "200": {
               "description": "User is deleted",
@@ -100,10 +93,10 @@
           }
         },
         "post": {
-          "summary": "Update user with give ID",
           "tags": [
-            "Users"
+            'Users'
           ],
+          "summary": "Update user with give ID",
           "parameters": [
             {
               "name": "User",
@@ -126,10 +119,10 @@
       },
       "/user": {
         "post": {
-          "summary": "Create user with give ID",
           "tags": [
-            "Users"
+            'Users'
           ],
+          "summary": "Create user with give ID",
           "parameters": [
             {
               "name": "User",

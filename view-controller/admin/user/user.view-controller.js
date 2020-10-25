@@ -1,14 +1,16 @@
 const express = require('express')
 const router = express.Router();
 
-const baseUrlView = 'admin/user/';
+const baseBreadcrumb = 'Quản lí người dùng';
 
 const { URL_LAYOUT } = require('../../../config/index');
 
+// VIEW: Add user
 router.get('/user/add', function (req, res) {
-    // console.log('Cookie: ' + req.cookies);
-    res.render(baseUrlView + 'add', {
-        username: req.cookies.username
+    res.render(URL_LAYOUT.ADMIN, {
+        urlCurrentPage: '../../admin/user/index',
+        listBreadcrumb: [baseBreadcrumb],
+        infoUser 
     });
 })
 

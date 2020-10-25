@@ -9,6 +9,7 @@ const auth =  (typeRequest) => {
     return  async function (req, res, next) {
         try {
             const token = req.header('Authorization')?.replace('Bearer ', '') || req.cookies.Authorization?.replace('Bearer ', '');
+            console.log('token:', token);
             const data = jwt.verify(token, process.env.JWT_KEY);
             const user = await UserModel.findOne({
                 _id: data._id,
@@ -25,7 +26,8 @@ const auth =  (typeRequest) => {
                 res.redirect('/login');
             } else {
                 res.status(401).send({
-                    error: 'Not authorized to access this resource'
+                    error: 'Not authorized to access this resource',
+                    status: 401
                 })
             }
         }

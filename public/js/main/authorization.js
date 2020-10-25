@@ -24,11 +24,11 @@ function loginJson(email, password) {
 }
 
 function logout(){
-    let cookies =  getCookie('Authorization');
+    const cookies =  getCookie('Authorization');
 
     $.ajax({
         type: 'POST',
-        url: 'logout',
+        url: '/logout',
         headers: {
             'Authorization': cookies,
         },

@@ -2,6 +2,7 @@ var {
   system,
   authSwaggerDocument,
   userSwaggerDocument,
+  chatRoomSwaggerDocument,
   NAME_ENVIRONMENT,
 } = require('./config/index');
 var express = require('express');
@@ -66,6 +67,8 @@ app.use('/', function (req, res, next) {
 
 app.use('/user-api-docs', swaggerUi.serve, swaggerUi.setup(userSwaggerDocument,  { "showExplorer": true }));
 app.use('/auth-api-docs', swaggerUi.serve, swaggerUi.setup(authSwaggerDocument,  { "showExplorer": true }));
+app.use('/chat-room-api-docs', swaggerUi.serve, swaggerUi.setup(chatRoomSwaggerDocument,  { "showExplorer": true }));
+
 app.use('/api/v1', router);
 app.use(express.json())
 
